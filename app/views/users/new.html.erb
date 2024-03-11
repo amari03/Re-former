@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h1>New User Form</h1>
+
+<!--
+<form action="/users" method="post" accept-chardet="utf-8">
+    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+
+  <label for="username">Username:</label>
+  <input type="text" id="username" name="user[username]"><br><br>
+  <label for="email">Email:</label>
+  <input type="text" id="email" name="user[email]"><br><br>
+  <label for="password">Password:</label>
+  <input type="text" id="password" name="user[password]"><br><br>
+  <input type="submit" value="Submit">
+</form>
+
+<p>Click the "Submit" button and the form-data will be sent to a page on the 
+server called "action_page.php".</p>
+-->
+
+<%= form_with(url: "/users", method: "post") do |form| %>
+  <%= form.hidden_field :authenticity_token, value: form_authenticity_token %>
+
+  <div>
+    <%= form.label :username, "Username:" %><br>
+    <%= form.text_field :username, id: "username", value: "JohnDoe101" %>
+  </div>
+  <div>
+    <%= form.label :email, "Email:" %><br>
+    <%= form.text_field :email, id: "email", placeholder: "example@example.com", value: "john@example.com" %>
+  </div>
+  <div>
+    <%= form.label :password, "Password:" %><br>
+    <%= form.password_field :password, id: "password", placeholder: "your password" %>
+  </div>
+  <div>
+    <%= form.submit "Submit" %>
+  </div>
+<% end %>
+
+
+</body>
+</html>
